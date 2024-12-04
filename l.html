@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="s.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Hidden checkbox for toggling between Sign In and Sign Up -->
+        <input type="checkbox" id="chk" aria-hidden="true">
+
+        <!-- Sign In Section -->
+        <div class="signin">
+            <form class="form">
+                <label for="chk">Sign in</label>
+                <input type="text" name="username" placeholder="User name" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <a href="https://www.google.com" class="frg">Forgot password?</a>
+                <button type="button">sign in</button>
+                <h6>__________________or__________________</h6>
+                <button type="button" >Google</button>
+            </form>
+        </div>
+
+        <!-- Sign Up Section -->
+        <div class="signup">
+            <form class="form1">
+                <label for="chk">Sign up</label>
+                <input type="text" name="username" placeholder="User name" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                <button type="button" class="button1">Sign up</button>
+                <h6>__________________or__________________</h6>
+                <button type="button" class="button1">Google</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
