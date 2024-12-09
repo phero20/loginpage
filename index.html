@@ -4,37 +4,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="C:\login\netflix\imgs\favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Netflix India – Watch TV Shows Online, Watch Movies Online</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <div class="box1">
-        <h1>Welcome!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur recusandae veritatis dolorem magni ex,
-            officia minima id asperiores pariatur tenetur?</p>
-        <div class="log">
-            <h2>SIGN IN</h2>
-            <form action="">
-                <label for="username">
-                    <i class="fas fa-user"></i>
-                    &nbsp; Username :
-                </label>
-                <input type="text" id="first" name="first" placeholder="Enter your Username" required>
-                <label for="password">
-                    <i class="fas fa-lock "> </i>
-                    &nbsp; Password :
-                </label>
-                <input type="password" name="pswd" placeholder="Enter your Password" required="">
-                <input type="checkbox" id="stay-signed-in" class="remember"><label for="stay-signed-in"
-                    class="remember1">Remember me</label>
-                <h3 class="fp"><a href="/forgot-password">Forgot Password?</a></h3>
-
-            </form>
+    <header>
+        <span><img src="C:\login\netflix\imgs\logo.svg" width="150px" alt=""></span>
+        <div class="but">
+            <select class="btnw" name="options">
+                <option value="option1">English</option>
+                <option value="option2">Hindi</option>
+            </select>
+            <button class="btnr btnw">Sign In</button>
+        </div>
+    </header>
+    <div class="main">
+        <div class="vdb">
+            <video src="C:\login\netflix\vds\bg.mp4" id="myVideo" autoplay muted loop></video>
+            <!-- <button class="play-pause-btn" id="playPauseBtn">
+                <i class="fas fa-play"></i> -->
+            </button>
+            <div class="hh">
+                <div class="hero">
+                    <span>Unlimited movies, Tv shows and more</span>
+                    <span>starts at ₹149. Cancel at any time.</span>
+                </div>
+            </div>
         </div>
     </div>
+    <div class="maii">
+        Ready to watch? Enter your email to create or restart your membership.
+    </div>
+    <div class="mail">
+        <input type="text" name="mail" placeholder="Email address">
+        <button class="btnrr">Get Started &nbsp;<i id="left" class="fa-solid fa-angle-right"></i></button>
+    </div>
+    <div class="trending">Trending Now</div>
+    <section class="trend section1">
+        <ul class="ul section1-ul">
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABUl-M1nn4uvT21kBv5aAh-QoP2s0PcL3UUcXQj9KmtaDtGr6PCATQ7PQQJqktUF-KkjTJvtoktddyYH_id9IA8ivP8ep-x3SZ7Ri.webp?r=e1d"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTaDIN651--r-vruakccicHzwwbfZ1eDr9DfLMWUTeXWDuy2g-CNRJmnr9Gr_JQOl7e38BbXlx6T2giLY7p1bds_wcCyn_5Gfn45.webp?r=595"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQL-TL6-il4829DMvEQa44WHp5-01qUqiuXjgDUyG3BDrpCFlPkuW8sQD_hj0k9c4KOaEFXGl2nYWUeCsIhutAFcCsyQElPJUOkQ.webp?r=bf7"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABYwGcTNByHKIGBxiEbGweNMT4BNaArGnfsBF3EFInt8J2CL7TkZYEjJ8otaCraFc_9gg2njEYQSqSlaMnECQqh9yCZ-2Am23x0SgIks_S48-9kfug-4xheM22thstwyb5u_jAw.webp?r=b7e"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABSJTwCRepT3hij8CAbXVf-kGcmJ1rIVtD7wT2AmGY4nhIP6GyADv7jWfWR1B1MwfeAu3RuNdlyQNmYx50sACOm24YSD_biqKtHhJ.webp?r=680"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTLqWgZqq9petPzMwBoXFit61cMkYL-VK9z0xoYXAuztzbELdng4YBwk-0KYl8rHbnyhLf-BbZlAVIg9qZwd5bdQ3qMzFQLyHg9DjgwBYkPm_9LbBWxaUywxXOMcGBk3SH12AA.webp?r=60b"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABS19fSWzYEDYQDhd3M_WOJz916Bw15TKS0NZz48p0LyzLZiq2LKETb24lOes5st7wQ9XkeyDX74hUGiXz_MjR5c5P2ds6marMRZC.webp?r=978"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-4857-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABWufSYoSh-ruSGRpzD_7k6m6nRPshhSVJsXf4vbq85zHVXCcIoAkKQZar1cVG79qU-aRQsBBdw37WOofOVDuLolhtQMGb6kklOlk.webp?r=f45"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABcOKVyDpoMqPMP8MRuASK8X0SenR-HIJphcwID5xC0PuCdn3p618nTL6h1n78t_ZpIA1aICPE6_D6_9nRHPnvAJUNf3aPy-W5hxfvjJpkqTovjtMJbt-2PSq0JjxnS9pS5xPJQ.webp?r=cf5"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABd3f1fqaLSCBm2gzSnx0E5IjyK85McDa89ra77Z8W0eIvL2QwhAjWuP3GJ9gHVn5wyCKiXK8n2J16fmfgES9XZFRQFtSyuDiM3YJ.webp?r=c25"
+                    width="190px" alt="" draggable="false"></li>
+            <!-- Add more items as needed -->
+        </ul>
+        <div class="icon"><i id="right-section1" class="fa-solid fa-angle-right"></i></div>
+    </section>
+    <div class="trending onlyonnetflix">Only on Netflix</div>
+    <section class="trend section2">
+        <ul class="ul section2-ul">
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABRY13rE6hFZeP981fDAgmKTcN4P0SzIOzCS8PMVNcm1A41O8G1dqia0SGeBUzBvFiH3JX_ugRAq5nbRkhsb4FpQy6PLwZyRw5cTO7EjbrO8YX7-Pk2joGpoaBQYi6RwFo4p11Q.webp?r=3f5"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABSaNExhdGyRm1Sd0E6lrqnWKhXMU-kLL_ydTGIX3DnQ9CEhteWUdGeZFCHhJF55t77q2mXYaS3oUZT9fn9BP_XAwspX76E7mCNbtlmdF0s5uhjwaTqIaisMPqB-705V3MoNYdQ.webp?r=470"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABTDVDAaF8irUSwjeVkDpRR6dsVfiDVtp0GmxTq2OHuVPO6xTtVXZCYb3PUWImTW5_lhb4RzLyRo_gCNAGVBeBHBu9KFQGcP6BLthQArNiEtPu4BQB14k710nTLaATi3IS35pug.webp?r=04a"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABW-d7ZXaidP5ykOiy-MSmgy-yVF1C4_68_poOkx-ZU04wLVevpoqkf3uEvHCsGZY_XipOSlNASQ0TfqWvjspCLE5-2AIVHHQY29oJC62Yd8PhSLBaZqzreyhaAmAM6Z7YQBBMg.webp?r=e79"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQ0U16Omm3NmKivD23lnV3pX3wJkmKXSAFUX5yGe19twNnPnqyU9bW8JtGsM3AP6UNqlb6MA4OBboVR7gC8FuZJxqtNjaPaheZMcgpFHzKzayydDgZ5_31sfw5lwoyFZsxJ8sA.webp?r=e3c"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABT4ecnnwn2CMi9BsnJKgbXWe-t4DkNA-M3HvcRHQKu56TAbFxQ2PUZr06MbFUUgPRBB2NLQGVrkIVfg63SDwFLntjd0y8TcbZeDHqYmhLlSrQSG6cK-7SKiCtzRR7LvxOcikfw.webp?r=28a"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABQ26mhDTxFE58n5Cwgwe_ReId62_vwDTsFu8zNv9aO1OW6SWAbCeGIN_th8eHMv2sdDSY1rk6STdF7r2GGLshF5ID25njhBE0IeNcasFwPxHlF33NAPTXgZOCOX_NhMUGbXnBg.webp?r=c7b"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABV4S0JtDH2OOTNxTXBzCvaWgBPHLTBlRMrSmTQONnPaa-Fzs0wqy5iH09TM5UaBdlFWsxieF-8DiUy39UOK_fiwlD-9juZUH4i5by2BWYK3jkU9dU-D4XQJTfkfa0CbRCfRrxg.webp?r=e1b"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABROJMgHuT0kF6UHU-1PgR5T6_MyUWbqAN8a70TMKBaTV6TDEif7AKv6BARn67_U4ZlVx31vWny9ljXaa74-HLXs3UD35gcXbnUcT56Bk9uqrh9jsBYaP-FGfSV8COqgJIyrNEg.webp?r=112"
+                    width="190px" alt="" draggable="false"></li>
+            <li><img src="https://occ-0-2086-2186.1.nflxso.net/dnm/api/v6/mAcAr9TxZIVbINe88xb3Teg5_OA/AAAABY4IcmiD5kWEjQkCN8eFeS29jHLjM9w0qVdlI3Km0vy4oBu-U3KH2nX6Yu_syCwcNQi4dJMcwuJWdLE5VZV6CX9WGg5Dc0ULd6gxxTH4RKwX3eyApynMiReJmll0OuqRMBfL0A.webp?r=679"
+                    width="190px" alt="" draggable="false"></li>
+            <!-- Add more items as needed -->
+        </ul>
+        <div class="icon"><i id="right-section2" class="fa-solid fa-angle-right"></i></div>
+    </section>
+    <div class="trending moore">More reasons to join</div>
+<section class="section3">
+    <ul>
+        <li><div class="text1">Stories tailored to your taste</div><div class="dabba"></div></li>
+        <li><div class="text1">Cancel or switch plan anytime</div><div class="dabba"></div></li>
+        <li><div class="text1">A place just for kids</div><div class="dabba"></div></li>
+        <li><div class="text1">For your phone, tablet, laptop and TV</div><div class="dabba"></div></li>
+    </ul>
+</section>
+<div class="trending faq">Freqently Asked questions</div>
+<section class="section4">
+    <ul>
+        <li><div class="text2"><p>What is Netflix?</p></div><div class="dabba"><i class="fas fa-chevron-down"></i></div></li>
+        <li><div class="text2">How much does Netflix cost?</div><div class="dabba"><i class="fas fa-chevron-down"></i></div></li>
+        <li><div class="text2">Where can I watch?</div><div class="dabba"><i class="fas fa-chevron-down"></i></div></li>
+        <li><div class="text2">How do I cancel?</div><div class="dabba"><i class="fas fa-chevron-down"></i></div></li>
+        <li><div class="text2">What can I watch on Netflix?</div><div class="dabba"><i class="fas fa-chevron-down"></i></div></li>
+        <li><div class="text2">Is Netflix good for kids?</div><div class="dabba"><i class="fas fa-chevron-down"></i></div></li>
+    </ul>
+</section>
+<section class="section5">
+    <button class="btnrr bb">Get Started &nbsp;<i id="left" class="fa-solid fa-angle-right"></i></button>
+    Create or restart your memebership
+</section>
+<section class="section6">
+    <div class="contact">Questions? Call <a href="">000-800-919-1743</a></div>
+    <div class="series">
+        <ul>
+            <li><a href="">FAQ</a></li>
+            <li><a href="">Help Centre</a></li>
+            <li><a href="">Account</a></li>
+            <li><a href="">Medio Centre</a></li>
+            <li><a href="">Investor Relations</a></li>
+            <li><a href="">Jobs</a></li>
+            <li><a href="">Ways to Watch</a></li>
+            <li><a href="">Terms of Use</a></li> 
+            <li><a href="">Privacy</a></li>
+            <li><a href="">Cookie Preferences</a></li>
+            <li><a href="">Corporate Information</a></li>
+            <li><a href="">Contact Us</a></li>
+            <li><a href="">Speed Test</a></li>
+            <li><a href="">Legal Notices</a></li>
+            <li><a href="">Only on Netflix</a></li>
+        </ul>
+    </div>
+    <div class="lang">
+        <select class="btnw" name="options">
+            <option value="option1">English</option>
+            <option value="option2">Hindi</option>
+        </select>
+    </div>
+    <div class="netflix">Netflix India</div>
+</section>
+    <script>
+        // Horizontal scrolling with arrows
+        const tabs1 = document.querySelector(".section1-ul");
+        const rightArrow1 = document.getElementById("right-section1");
+
+        rightArrow1.addEventListener("click", () => {
+            tabs1.scrollBy({
+                top: 0,
+                left: 200,
+                behavior: "smooth"
+            });
+        });
+
+        const tabs2 = document.querySelector(".section2-ul");
+        const rightArrow2 = document.getElementById("right-section2");
+
+        rightArrow2.addEventListener("click", () => {
+            tabs2.scrollBy({
+                top: 0,
+                left: 200,
+                behavior: "smooth"
+            });
+        });
+
+        // Mouse drag scrolling
+        const sliders = document.querySelectorAll('.ul');
+
+        sliders.forEach(slider => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('dragging');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.classList.remove('dragging');
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('dragging');
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; // Adjust the multiplier for sensitivity
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+    </script>
 </body>
 
 </html>
