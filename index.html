@@ -4,36 +4,2092 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="C:\login\anime\img\connection.png" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-
-    <title>Login Page</title>
+    <title>Crunchyroll</title>
 </head>
 
 <body>
-    <div class="box1">
-        <h1>Welcome!</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur recusandae veritatis dolorem magni ex,
-            officia minima id asperiores pariatur tenetur?</p>
-        <div class="log">
-            <h2>SIGN IN</h2>
-            <form action="">
-                <label for="username">
-                    <i class="fas fa-user"></i>
-                    &nbsp; Username :
-                </label>
-                <input type="text" id="first" name="first" placeholder="Enter your Username" required>
-                <label for="password">
-                    <i class="fas fa-lock "> </i>
-                    &nbsp; Password :
-                </label>
-                <input type="password" name="pswd" placeholder="Enter your Password" required="">
-                <input type="checkbox" id="stay-signed-in" class="remember"><label for="stay-signed-in"
-                    class="remember1">Remember me</label>
-                <h3 class="fp"><a href="/forgot-password">Forgot Password?</a></h3>
+    <script>
+        var counter = 1;
+        setInterval(function () {
+            document.getElementById('radio' + counter).checked = true;
+            counter++;
+            if (counter > 5) {
+                counter = 1;
+            }
+        }, 5000);
 
-            </form>
+        const sliders = document.querySelectorAll('.animelist');
+
+        sliders.forEach(slider => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+
+            slider.addEventListener('mousedown', (e) => {
+                isDown = true;
+                slider.classList.add('dragging');
+                startX = e.pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('mouseleave', () => {
+                isDown = false;
+                slider.classList.remove('dragging');
+            });
+
+            slider.addEventListener('mouseup', () => {
+                isDown = false;
+                slider.classList.remove('dragging');
+            });
+
+            slider.addEventListener('mousemove', (e) => {
+                if (!isDown) return;
+                e.preventDefault();
+                const x = e.pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2; // Adjust for sensitivity
+                slider.scrollLeft = scrollLeft - walk;
+            });
+
+            // Touch support
+            slider.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].pageX - slider.offsetLeft;
+                scrollLeft = slider.scrollLeft;
+            });
+
+            slider.addEventListener('touchmove', (e) => {
+                const x = e.touches[0].pageX - slider.offsetLeft;
+                const walk = (x - startX) * 2;
+                slider.scrollLeft = scrollLeft - walk;
+            });
+        });
+
+    </script>
+    <nav>
+        <div class="logo">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 303 52" data-t="crunchyroll-horizontal-svg"
+                aria-labelledby="crunchyroll-horizontal-svg" aria-hidden="false" role="img">
+                <title id="crunchyroll-horizontal-svg">Crunchyroll logo</title>
+                <path
+                    d="M62.1772 26.0647C62.1772 17.3803 69.1876 10.3699 77.872 10.3699C84.2042 10.3699 89.2693 13.8967 91.8466 19.0081L85.425 22.1742C84.0686 19.2794 81.3094 17.1091 77.872 17.1091C73.1676 17.1091 69.3233 20.9996 69.3233 26.0647C69.3233 31.1299 73.1676 35.0667 77.872 35.0667C81.3094 35.0667 84.0686 32.8963 85.425 30.0015L91.8466 33.1676C89.2693 38.279 84.2042 41.8058 77.872 41.8058C69.1876 41.8058 62.1772 34.7954 62.1772 26.0647Z M94.3376 18.7368H101.077V22.3992C102.298 20.0933 104.197 18.7368 106.506 18.7368H108.405V25.3865H106.188C102.976 25.3865 101.484 27.1499 101.484 30.2728V41.3526H94.3376V18.7368Z M110.754 31.6724V18.7368H117.9V31.6724C117.9 34.1603 119.484 35.6986 121.88 35.6986C124.275 35.6986 125.86 34.1603 125.86 31.6724V18.7368H133.006V31.6724C133.006 37.6871 128.301 41.8027 121.88 41.8027C115.458 41.8027 110.754 37.6871 110.754 31.6724Z M136.4 18.7368H143.41V21.4959C144.995 19.6863 147.208 18.5117 149.789 18.5117C155.307 18.5117 158.926 22.538 158.926 28.3275V41.3526H151.78V28.3275C151.78 25.9291 150.017 24.1195 147.665 24.1195C145.312 24.1195 143.549 25.9291 143.549 28.3275V41.3526H136.403V18.7368H136.4Z M178.691 32.1256L184.526 34.8848C182.671 38.9541 178.647 41.8058 173.761 41.8058C167.158 41.8058 161.864 36.5588 161.864 30.0447C161.864 23.5306 167.158 18.2836 173.761 18.2836C178.691 18.2836 182.717 21.1784 184.573 25.2478L178.694 28.0532C177.926 25.9723 176.024 24.5264 173.764 24.5264C170.78 24.5264 168.517 26.968 168.517 30.0447C168.517 33.1214 170.78 35.563 173.764 35.563C175.981 35.563 177.88 34.1603 178.694 32.1256H178.691Z M186.832 10.8231H193.978V21.4528C195.563 19.6432 197.733 18.5117 200.221 18.5117C205.739 18.5117 209.359 22.538 209.359 28.3275V41.3526H202.213V28.3275C202.213 25.9291 200.449 24.1195 198.097 24.1195C195.745 24.1195 193.981 25.9291 193.981 28.3275V41.3526H186.835V10.8231H186.832Z M222.337 32.215L227.131 18.7368H234.277L225.14 42.7091C223.241 47.6848 220.254 49.8089 215.188 49.8089H211.933V43.5661H215.188C217.134 43.5661 218.129 42.7522 218.672 41.3958L209.67 18.7368H217.312L222.334 32.215H222.337Z M236.087 18.7368H242.826V22.3992C244.047 20.0933 245.946 18.7368 248.255 18.7368H250.154V25.3865H247.938C244.725 25.3865 243.233 27.1499 243.233 30.2728V41.3526H236.087V18.7368Z M251.15 30.0447C251.15 23.5769 256.443 18.2836 263.136 18.2836C269.829 18.2836 275.122 23.5769 275.122 30.0447C275.122 36.5125 269.829 41.8058 263.136 41.8058C256.443 41.8058 251.15 36.5588 251.15 30.0447ZM257.8 30.0447C257.8 33.2108 260.152 35.563 263.136 35.563C266.12 35.563 268.472 33.2108 268.472 30.0447C268.472 26.8786 266.12 24.5264 263.136 24.5264C260.152 24.5264 257.8 26.8786 257.8 30.0447Z M286.427 41.3526C280.502 41.3526 278.06 38.7291 278.06 33.1214V10.8231H285.206V33.1214C285.206 34.3884 285.749 35.1129 287.016 35.1129H288.19V41.3557H286.427V41.3526Z M298.367 41.3526C292.442 41.3526 290 38.7291 290 33.1214V10.8231H297.146V33.1214C297.146 34.3884 297.689 35.1129 298.956 35.1129H300.13V41.3557H298.367V41.3526Z M7.81735 28.8732C7.82968 17.2231 17.2848 7.78652 28.9349 7.79885C40.0886 7.81118 49.2108 16.4771 49.9568 27.4366C49.9846 26.968 50 26.4963 50 26.0247C50.0123 12.7684 39.2809 2.01234 26.0247 2.00001C12.7684 1.98768 2.01234 12.7222 2.00001 25.9753C1.98768 39.2316 12.7222 49.9877 25.9753 50C26.5241 50 27.0667 49.9815 27.6062 49.9476C16.5542 49.2724 7.80502 40.0917 7.81735 28.8732Z M40.3846 29.1846C35.8559 29.1815 32.1873 25.5037 32.1935 20.9749C32.1965 17.4235 34.4594 14.4023 37.6193 13.2647C35.1191 11.9453 32.2705 11.1961 29.2432 11.1931C19.2948 11.1838 11.2208 19.2393 11.2116 29.1877C11.2023 39.136 19.2578 47.21 29.2062 47.2193C39.1545 47.2285 47.2285 39.173 47.2378 29.2216C47.2378 28.0933 47.136 26.9927 46.9387 25.9198C45.4405 27.9021 43.0636 29.1846 40.3846 29.1815V29.1846Z">
+                </path>
+            </svg>
         </div>
+        <div class="menu">
+            <div class="browse">
+                <span>Browse</span>
+                <svg class="header-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    data-t="dropdown-svg" aria-labelledby="dropdown-svg" aria-hidden="true" role="img">
+                    <title id="dropdown-svg">Dropdown menu</title>
+                    <path d="M7 10h10l-5 5z"></path>
+                </svg>
+            </div>
+            <div class="games">
+                <span>Games</span>
+            </div>
+            <div class="news">
+                <span>News</span>
+                <svg class="header-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    data-t="dropdown-svg" aria-labelledby="dropdown-svg" aria-hidden="true" role="img">
+                    <title id="dropdown-svg">Dropdown menu</title>
+                    <path d="M7 10h10l-5 5z"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="premium">
+            <svg class="premium-filled-icon--nW2Vi header-svg-icon" xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16" data-t="premium-filled-svg" aria-labelledby="premium-filled-svg" aria-hidden="true"
+                role="img">
+                <title id="premium-filled-svg">Premium</title>
+                <path d="M2.419 13L0 4.797 4.837 6.94 8 2l3.163 4.94L16 4.798 13.581 13z"></path>
+            </svg>
+            <div class="containerforpremium">
+                <span>Try Free</span>
+                <span>Premium</span>
+            </div>
+        </div>
+        <div class="search">
+            <svg class="header-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="search-svg"
+                aria-labelledby="search-svg" aria-hidden="false" role="img">
+                <title id="search-svg">Search</title>
+                <path
+                    d="M15.474 14.035l6.235 6.26a1 1 0 1 1-1.418 1.41l-6.228-6.253a7.5 7.5 0 1 1 1.41-1.418zM9.5 15a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z">
+                </path>
+            </svg>
+        </div>
+        <div class="save">
+            <svg class="header-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="watchlist-svg"
+                aria-labelledby="watchlist-svg" aria-hidden="false" role="img">
+                <title id="watchlist-svg">Watchlist</title>
+                <path
+                    d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                </path>
+            </svg>
+        </div>
+        <div class="account">
+            <svg class="header-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                data-t="user-settings-svg" aria-labelledby="user-settings-svg" aria-hidden="true" role="img">
+                <title id="user-settings-svg">Account menu</title>
+                <path
+                    d="M12 20a6.01 6.01 0 0 1-5.966-5.355L12 12.088l5.966 2.557A6.01 6.01 0 0 1 12 20m0-16c1.654 0 3 1.346 3 3s-1.345 3-2.999 3h-.002A3.003 3.003 0 0 1 9 7c0-1.654 1.346-3 3-3m7.394 9.081l-4.572-1.959A4.997 4.997 0 0 0 17 7c0-2.757-2.243-5-5-5S7 4.243 7 7c0 1.71.865 3.22 2.178 4.122l-4.572 1.959A.999.999 0 0 0 4 14c0 4.411 3.589 8 8 8s8-3.589 8-8c0-.4-.238-.762-.606-.919">
+                </path>
+            </svg>
+        </div>
+    </nav>
+    <main>
+        <div class="slider">
+            <div class="slides">
+                <input type="radio" name="radio-btn" id="radio1">
+                <input type="radio" name="radio-btn" id="radio2">
+                <input type="radio" name="radio-btn" id="radio3">
+                <input type="radio" name="radio-btn" id="radio4">
+                <input type="radio" name="radio-btn" id="radio5">
+
+                <div class="slide first">
+
+                    <img src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/bc5934e65dcfc3e6f1f783160ce023fb.jpg"
+                        alt="">
+                    <div class="bluelockimg">
+                        <img src=" https: //imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/BLUE%20LOCK/SEASON%202/ULTRA-WIDE/BLUELOCK-S2-KV1-UW-Logo.png"
+                            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320/CurationAssets/BLUE%20LOCK/SEASON%202/ULTRA-WIDE/BLUELOCK-S2-KV1-UW-Logo.png 320w"
+                            alt="">
+                        <span>Sub | Dub * Drama, Sports</span>
+                        <div class="paragraph">
+                            <p>
+                                Japan’s desire for World Cup glory leads the Japanese Football Association to launch a
+                                new rigorous training program to find the national team’s next striker. Three hundred
+                                high
+                                school players are pitted against each other for the position, but only one will
+                                come
+                            </p>
+                            <div class="buttonsgroup">
+                                <button class="button1">
+                                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20"
+                                        data-t="play-svg" aria-labelledby="play-svg" aria-hidden="true" role="img"
+                                        width="30px">
+                                        <title id="play-svg">Play</title>
+                                        <path
+                                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                                        </path>
+                                    </svg>
+                                    START WATCHING S1 E1</button>
+                                <button class="button2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg"
+                                        aria-hidden="false" role="img">
+                                        <title id="watchlist-svg">Watchlist</title>
+                                        <path
+                                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                                        </path>
+                                    </svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://m.media-amazon.com/images/S/pv-target-images/e1f944cd0619ce8f0aa86964147f9278783b704922f5e90e61db321eef7bd01b._SX1080_FMjpg_.jpg"
+                        alt="">
+                    <div class="bluelocimg">
+                        <img alt="[no RU] Sword Art Online Alternative: Gun Gale Online"
+                            class="hero-card-layout__logo-img--z2De7 hero-card-layout__logo-img--is-ready--7E-O3"
+                            loading="eager" sizes="
+                            (max-width: 960px) 320px,
+                            (max-width: 1260px) 480px,
+                            600px
+                          " src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Sword%20Art%20Online%20Alternative:%20Gun%20Gale%20Online/SEASON%202/ULTRA-WIDE/SwordArtOnlineAlternativeGunGale-S2C1-KV2-UW-Logo-ENG.png"
+                            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320/CurationAssets/Sword%20Art%20Online%20Alternative:%20Gun%20Gale%20Online/SEASON%202/ULTRA-WIDE/SwordArtOnlineAlternativeGunGale-S2C1-KV2-UW-Logo-ENG.png 320w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Sword%20Art%20Online%20Alternative:%20Gun%20Gale%20Online/SEASON%202/ULTRA-WIDE/SwordArtOnlineAlternativeGunGale-S2C1-KV2-UW-Logo-ENG.png 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/CurationAssets/Sword%20Art%20Online%20Alternative:%20Gun%20Gale%20Online/SEASON%202/ULTRA-WIDE/SwordArtOnlineAlternativeGunGale-S2C1-KV2-UW-Logo-ENG.png 600w">
+                        <span>Sub | Dub * Action, Adventure, Drama, Isekai, Sci-Fi</span>
+                        <div class="paragraph">
+                            <p>
+                                In the world of guns and steel that is Gun Gale Online, LLENN has been a devoted, female
+                                solo player. She is obsessed with two things: donning herself entirely in pink and
+                                honing her skills with consistent game play. She soon discovers her love for hunting
+                            </p>
+                            <div class="buttonsgroup">
+                                <button class="button1">
+                                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20"
+                                        data-t="play-svg" aria-labelledby="play-svg" aria-hidden="true" role="img"
+                                        width="30px">
+                                        <title id="play-svg">Play</title>
+                                        <path
+                                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                                        </path>
+                                    </svg>
+                                    START WATCHING S1 E1</button>
+                                <button class="button2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg"
+                                        aria-hidden="false" role="img">
+                                        <title id="watchlist-svg">Watchlist</title>
+                                        <path
+                                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                                        </path>
+                                    </svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://animetv-jp.net/wp-content/uploads/2024/09/GYodTd2aYAA_9g8-e1727609276945.jpeg"
+                        alt="">
+                    <div class="bluelocimg">
+                        <img alt="Tower of God S2C2"
+                            class="hero-card-layout__logo-img--z2De7 hero-card-layout__logo-img--is-ready--7E-O3"
+                            loading="eager"
+                            src="
+                            https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Tower%20of%20God%20/SEASON%202/ULTRA-WIDE/TowerofGod-S2C2-KV1-UW-Logo.png"
+                            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320/CurationAssets/Tower%20of%20God%20/SEASON%202/ULTRA-WIDE/TowerofGod-S2C2-KV1-UW-Logo.png 320w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Tower%20of%20God%20/SEASON%202/ULTRA-WIDE/TowerofGod-S2C2-KV1-UW-Logo.png 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/CurationAssets/Tower%20of%20God%20/SEASON%202/ULTRA-WIDE/TowerofGod-S2C2-KV1-UW-Logo.png 600w">
+                        <span>Sub | Dub * Action, Adventure, Drama, Fantasy, Shonen</span>
+                        <div class="paragraph">
+                            <p>
+                                Reach the top, and everything will be yours. At the top of the tower exists everything
+                                in this world, and all of it can be yours. You can become a god. This is the story of
+                                the beginning and the end of Rachel, the girl who climbed the tower so she could see the
+                                stars,
+                            </p>
+                            <div class="buttonsgroup">
+                                <button class="button1">
+                                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20"
+                                        data-t="play-svg" aria-labelledby="play-svg" aria-hidden="true" role="img"
+                                        width="30px">
+                                        <title id="play-svg">Play</title>
+                                        <path
+                                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                                        </path>
+                                    </svg>
+                                    START WATCHING S1 E1</button>
+                                <button class="button2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg"
+                                        aria-hidden="false" role="img">
+                                        <title id="watchlist-svg">Watchlist</title>
+                                        <path
+                                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                                        </path>
+                                    </svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://m.media-amazon.com/images/S/pv-target-images/40506a12e2b4fd71d647127c5462fa381f3413de901572ba2c3e3c15bc83e5f2.jpg"
+                        alt="">
+                    <div class="bluelocimg">
+                        <img alt="Seirei Gensouki: Spirit Chronicles"
+                            class="hero-card-layout__logo-img--z2De7 hero-card-layout__logo-img--is-ready--7E-O3"
+                            loading="eager" sizes="
+                        (max-width: 960px) 320px,
+                        (max-width: 1260px) 480px,
+                        600px
+                      " src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Seirei%20Gensouki%20Spirit%20Chronicles/SEASON%202/ULTRA-WIDE/SeireiGensoukiSpiritChronicles-S2C1-KV1-UW-Logo-ENG.png"
+                            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320/CurationAssets/Seirei%20Gensouki%20Spirit%20Chronicles/SEASON%202/ULTRA-WIDE/SeireiGensoukiSpiritChronicles-S2C1-KV1-UW-Logo-ENG.png 320w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Seirei%20Gensouki%20Spirit%20Chronicles/SEASON%202/ULTRA-WIDE/SeireiGensoukiSpiritChronicles-S2C1-KV1-UW-Logo-ENG.png 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/CurationAssets/Seirei%20Gensouki%20Spirit%20Chronicles/SEASON%202/ULTRA-WIDE/SeireiGensoukiSpiritChronicles-S2C1-KV1-UW-Logo-ENG.png 600w">
+                        <span>Sub | Dub * Action, Adventure, Drama, Fantasy, Harem, Isekai</span>
+                        <div class="paragraph">
+                            <p>
+                                His past life and current life are intersecting--a boy with memories of two lives faces
+                                his destiny! After his mother was killed at an early age, the orphaned Rio fought his
+                                hardest to survive in the slums. One day, he awakens to the memories of Haruto Amakwa
+                            </p>
+                            <div class="buttonsgroup">
+                                <button class="button1">
+                                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20"
+                                        data-t="play-svg" aria-labelledby="play-svg" aria-hidden="true" role="img"
+                                        width="30px">
+                                        <title id="play-svg">Play</title>
+                                        <path
+                                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                                        </path>
+                                    </svg>
+                                    START WATCHING S1 E1</button>
+                                <button class="button2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg"
+                                        aria-hidden="false" role="img">
+                                        <title id="watchlist-svg">Watchlist</title>
+                                        <path
+                                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                                        </path>
+                                    </svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="slide">
+                    <img src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200,height=675/catalog/crunchyroll/a5f4f7ffb7e57e2e1409f123f6498c1a.jpg"
+                        alt="">
+                    <div class="bluelocimg">
+                        <img alt="Shangri-La Frontier S2"
+                            class="hero-card-layout__logo-img--z2De7 hero-card-layout__logo-img--is-ready--7E-O3"
+                            loading="eager" sizes="
+                        (max-width: 960px) 320px,
+                        (max-width: 1260px) 480px,
+                        600px
+                      " src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Shangri-La%20Frontier/SEASON%202/ULTRA-WIDE/ShangriLaFrontier-S2-KV1-Logo-EN.png"
+                            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320/CurationAssets/Shangri-La%20Frontier/SEASON%202/ULTRA-WIDE/ShangriLaFrontier-S2-KV1-Logo-EN.png 320w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/CurationAssets/Shangri-La%20Frontier/SEASON%202/ULTRA-WIDE/ShangriLaFrontier-S2-KV1-Logo-EN.png 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/CurationAssets/Shangri-La%20Frontier/SEASON%202/ULTRA-WIDE/ShangriLaFrontier-S2-KV1-Logo-EN.png 600w">
+                        <span>Sub | Dub * Action, Adventure, Drama, Fantasy, Harem, Isekai</span>
+                        <div class="paragraph">
+                            <p>
+                                His past life and current life are intersecting--a boy with memories of two lives faces
+                                his destiny! After his mother was killed at an early age, the orphaned Rio fought his
+                                hardest to survive in the slums. One day, he awakens to the memories of Haruto Amakwa
+                            </p>
+                            <div class="buttonsgroup">
+                                <button class="button1">
+                                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20"
+                                        data-t="play-svg" aria-labelledby="play-svg" aria-hidden="true" role="img"
+                                        width="30px">
+                                        <title id="play-svg">Play</title>
+                                        <path
+                                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                                        </path>
+                                    </svg>
+                                    START WATCHING S1 E1</button>
+                                <button class="button2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg"
+                                        aria-hidden="false" role="img">
+                                        <title id="watchlist-svg">Watchlist</title>
+                                        <path
+                                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                                        </path>
+                                    </svg></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="navigation-auto">
+                    <div class="auto-btn1"></div>
+                    <div class="auto-btn2"></div>
+                    <div class="auto-btn3"></div>
+                    <div class="auto-btn4"></div>
+                    <div class="auto-btn5"></div>
+                </div>
+
+            </div>
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
+                <label for="radio4" class="manual-btn"></label>
+                <label for="radio5" class="manual-btn"></label>
+            </div>
+        </div>
+        <div class="filter">
+        </div>
+    </main>
+    <div class="freetowatch">
+        <span>Free to Watch In India</span>
+        <span>Fantastic Free Anime</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/ecde98e22bf07699fc233530053b475c.jpg"
+                        alt="Re:ZERO -Starting Life in Another World-" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/ecde98e22bf07699fc233530053b475c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/ecde98e22bf07699fc233530053b475c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/ecde98e22bf07699fc233530053b475c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Re:ZERO -Starting Life in Another World-</span>
+                        <div class="rating">
+                            <span>4.7 * (92.7K)</span>
+                            <span>4 Season</span>
+                            <span>48 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Re:ZERO</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/01ec367b44f0a568430a957e042639af.jpg"
+                        alt="Naruto Shippuden" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/01ec367b44f0a568430a957e042639af.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/01ec367b44f0a568430a957e042639af.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/01ec367b44f0a568430a957e042639af.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Naruto Shippuden</span>
+                        <div class="rating">
+                            <span>4.7 * (172.4K)</span>
+                            <span>17 Season</span>
+                            <span>500 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Naruto Shippuden</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/48b9c687382510e7ae195f61fee65c61.jpg"
+                        alt="Kaguya-sama: Love Is War" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/48b9c687382510e7ae195f61fee65c61.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/48b9c687382510e7ae195f61fee65c61.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/48b9c687382510e7ae195f61fee65c61.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Kaguya-sama: Love Is War</span>
+                        <div class="rating">
+                            <span>4.9 * (96.5K)</span>
+                            <span>3 Season</span>
+                            <span>29 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Kaguya-sama: Love Is War</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg"
+                        alt="Dragon Ball Movies" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Dragon Ball Movies</span>
+                        <div class="rating">
+                            <span>4.7 * (13.5K)</span>
+                            <span>1 Season</span>
+                            <span>1 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Dragon Ball Movies</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg"
+                        alt="Demon Slayer: Kimetsu no Yaiba" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Demon Slayer: Kimetsu no Yaiba</span>
+                        <div class="rating">
+                            <span>4.9 * (556K)</span>
+                            <span>6 Season</span>
+                            <span>64 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Demon Slayer: Kimetsu no Yaiba</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="banner">
+        <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1350/CurationAssets/Arifureta:%20From%20Commonplace%20to%20World's%20Strongest/SEASON%203/MARKETING%20BANNER/Arifureta-S3C1-KV0-Banner-2100x700-EN.png"
+            alt="Arifureta: From Commonplace to World's Strongest" data-t="original-image" sizes="100vw"
+            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=720/CurationAssets/Arifureta:%20From%20Commonplace%20to%20World's%20Strongest/SEASON%203/MARKETING%20BANNER/Arifureta-S3C1-KV0-Banner-2100x700-EN.png 720w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1080/CurationAssets/Arifureta:%20From%20Commonplace%20to%20World's%20Strongest/SEASON%203/MARKETING%20BANNER/Arifureta-S3C1-KV0-Banner-2100x700-EN.png 1080w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1350/CurationAssets/Arifureta:%20From%20Commonplace%20to%20World's%20Strongest/SEASON%203/MARKETING%20BANNER/Arifureta-S3C1-KV0-Banner-2100x700-EN.png 1350w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/Arifureta:%20From%20Commonplace%20to%20World's%20Strongest/SEASON%203/MARKETING%20BANNER/Arifureta-S3C1-KV0-Banner-2100x700-EN.png 2700w">
+    </div>
+    <div class="freetowatch">
+        <span>October 2024 Seasonal Sampler</span>
+        <span>Check out the first few episodes of these new shows for free!</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpg"
+                        alt="Hunter x Hunter" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/cbb55a6382682bf71e91f685c6473c5a.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Hunter X Hunter</span>
+                        <div class="rating">
+                            <span>4.9 * (105.5K)</span>
+                            <span>1 Season</span>
+                            <span>148 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Hunter X Hunter</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/e108ae17d8d0407417cac40eb52d849a.jpg"
+                        alt="Black Clover" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/e108ae17d8d0407417cac40eb52d849a.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/e108ae17d8d0407417cac40eb52d849a.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/e108ae17d8d0407417cac40eb52d849a.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Black Clover</span>
+                        <div class="rating">
+                            <span>4.8 * (178K)</span>
+                            <span>1 Season</span>
+                            <span>171 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Black Clover</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/3b70d9f3c112faa30940bcc26f1cff98.jpg"
+                        alt="Chainsaw Man" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/3b70d9f3c112faa30940bcc26f1cff98.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/3b70d9f3c112faa30940bcc26f1cff98.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/3b70d9f3c112faa30940bcc26f1cff98.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Chainsaw Man</span>
+                        <div class="rating">
+                            <span>4.9 * (361.6K)</span>
+                            <span>1 Season</span>
+                            <span>12 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Chainsaw Man</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/0662921aa3b81ff85737ddeb56deefab.jpg"
+                        alt="Fullmetal Alchemist: Brotherhood" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/0662921aa3b81ff85737ddeb56deefab.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/0662921aa3b81ff85737ddeb56deefab.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/0662921aa3b81ff85737ddeb56deefab.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Fullmetal Alchemist: Brotherhood</span>
+                        <div class="rating">
+                            <span>4.9 * (66.6K)</span>
+                            <span>1 Season</span>
+                            <span>64 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Fullmetal Alchemist: Brotherhood</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg"
+                        alt="Code Geass" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Code Geass</span>
+                        <div class="rating">
+                            <span>4.9 * (45.7K)</span>
+                            <span>3 Season</span>
+                            <span>54 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Code Geass</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="space"></div>
+    <div class="freetowatch">
+        <span>Top Picks for You</span>
+        <span>Check out the first few episodes of these new shows for free!</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg"
+                        alt="Solo Leveling" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 960w"
+                        alt="">
+                    <div class="animehover">
+                        <span class="span1">Solo Leveling</span>
+                        <div class="rating">
+                            <span>4.9 * (358.5K)</span>
+                            <span>1 Season</span>
+                            <span>13 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Solo Leveling</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe"
+                        alt="JoJo's Bizarre Adventure" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe 960w">
+                    <div class="animehover">
+                        <span class="span1">JoJo's Bizarre Adventure</span>
+                        <div class="rating">
+                            <span>4.7 * (56.5K)</span>
+                            <span>4 Season</span>
+                            <span>77 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>JoJo's Bizarre Adventure</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg"
+                        alt="Frieren: Beyond Journey's End" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Frieren: Beyond Journey's End</span>
+                        <div class="rating">
+                            <span>4.9 * (188.1K)</span>
+                            <span>1 Season</span>
+                            <span>28 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Frieren: Beyond Journey's End</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg"
+                        alt="MASHLE: MAGIC AND MUSCLES" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">MASHLE: MAGIC NAD MUSCLES</span>
+                        <div class="rating">
+                            <span>4.8 * (153.1K)</span>
+                            <span>2 Season</span>
+                            <span>25 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>MASHLE: MAGIC NAD MUSCLES</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe"
+                        alt="JUJUTSU KAISEN" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe 960w">
+                    <div class="animehover">
+                        <span class="span1">JUJUTSU KAISEN</span>
+                        <div class="rating">
+                            <span>4.9 * (468.9K)</span>
+                            <span>3 Season</span>
+                            <span>48 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>JUJUTSU KAISEN</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="uniqueuedabba">
+        <div class="newepisode">
+            <div class="new">
+                <svg class="feed-header__icon--LlqDV" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                    data-t="curated-carousel-svg" aria-labelledby="curated-carousel-svg" aria-hidden="true" role="img">
+                    <title id="curated-carousel-svg">Curated Carousel</title>
+                    <path
+                        d="M22 1.2v17h-5.5L12 22.8l-4.5-4.6H2v-17h20zm-2 1.9H4v13h4.4l3.6 3.8 3.6-3.7H20V3.1zM9.5 5c.3-.1.7-.1 1 .1L16 8.9c.3.1.5.5.5.8 0 .3-.1.6-.4.8l-5.5 3.8c-.2.1-.4.2-.6.2-.2 0-.4 0-.5-.1-.3-.2-.5-.5-.5-.9V5.9c0-.4.2-.7.5-.9zM11 7.8v3.8l2.7-1.9L11 7.8z">
+                    </path>
+                </svg>
+                <span class="newep">New Episodes</span>
+            </div>
+            <div class="viewrelease">
+                <span>VIEW RELEASE CALENDER</span>
+                <svg class="angle--pJ1yZ angle--is-right--iTQzd feed-header__view-link-icon--8jqah"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="angle-right-svg"
+                    aria-labelledby="angle-svg" aria-hidden="true" role="img">
+                    <title id="angle-svg">Next</title>
+                    <path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4 4.6-4.6z"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="today">
+            <span>Today</span>
+            <div class="line"></div>
+            <div class="linekenicheka">
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/b61c2f4e5cc43ac1211b03fcbae03c78.jpg"
+                        alt="MF GHOST" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">(Dubs) MF GHOST Season 2 (English Dub)</span>
+                        <span class="GHOST1">2 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Sub | Dub </span><span class="time">3:00am</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/17d5c4c897b235b8c887a17c43816091.jpg"
+                        alt="Tower of God" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">(Dubs) Tower of God</span>
+                        <span class="GHOST1">8 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Sub | Dub </span><span class="time">2:30am</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/a5f4f7ffb7e57e2e1409f123f6498c1a.jpg"
+                        alt="Shangri-La Frontier" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">(Dubs) Shangri-La Frontier</span>
+                        <span class="GHOST1">9 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Sub | Dub </span><span class="time">1:30am</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="today today1">
+            <span>Yesterday</span>
+            <div class="line"></div>
+            <div class="linekenicheka linekenicheka1">
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/b61c2f4e5cc43ac1211b03fcbae03c78.jpg"
+                        alt="MF GHOST" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">MF GHOST Season 2</span>
+                        <span class="GHOST1">23 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Subtitled</span><span class="time">10:30pm</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=70,width=320,height=180/catalog/crunchyroll/d839a841c690cdb9ca85bd6d61ee7a1b.jpg"
+                        alt="Puniru is a Kawaii Slime" data-t="card-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">Puniru is a Kawaii Slime</span>
+                        <span class="GHOST1">11 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Subtitled</span><span class="time">10:15pm</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/17d5c4c897b235b8c887a17c43816091.jpg"
+                        alt="Tower of God" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">Tower of God Season 2</span>
+                        <span class="GHOST1">24 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Subtitled</span><span class="time">8:30pm</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/a5f4f7ffb7e57e2e1409f123f6498c1a.jpg"
+                        alt="Shangri-La Frontier" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">Shangri-La Frontier Season 2</span>
+                        <span class="GHOST1">35 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Subtitled</span><span class="time">4:00pm</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg"
+                        alt="One Piece" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">One Piece Log: Fish-Man Island Saga</span>
+                        <span class="GHOST1">FM17- Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Subtitled</span><span class="time">7:30pm</span></div>
+                    </div>
+                </div>
+                <div class="jhotiphoto">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=320,height=180/catalog/crunchyroll/d172ce6deaf012f5e45863d3478854dd.jpg"
+                        alt="Blue Exorcist" data-t="original-image">
+                    <div class="namajhoteimageke">
+                        <span class="GHOST">(Dubs) Blue Exorcist</span>
+                        <span class="GHOST1">3 Episodes</span>
+                        <div class="GHOST1"><span class="GHOST1">Sub | Dub</span><span class="time">4:30pm</span></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <button class="showmorekabutton">Show More</button>
+    </div>
+    <div class="orangedabba">
+        <img src="https://images4.alphacoders.com/137/thumb-1920-1378547.png" width="100%" height="830px">
+        <div class="blackdabba">
+            <div class="newepisode newsss">
+                <div class="new">
+                    <svg class="feed-header__icon--LlqDV" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        data-t="crunchyroll-news-svg" aria-labelledby="crunchyroll-news-svg" aria-hidden="true"
+                        role="img">
+                        <title id="crunchyroll-news-svg">Crunchyroll news</title>
+                        <path
+                            d="M14.223 5.143c2.325 0 3.539 3.32 3.539 6.568 0 3.248-1.215 6.548-3.58 6.516a2.307 2.307 0 01-.745-.132h-.063l-1.35-.48-2.638 2.195-6.281-2.195v-3.157l-.838-.296-.026-.013C2.064 14.055 1 13.42 1 11.73 1 9.886 2.268 9.23 2.268 9.23l.136-.062 10.972-3.902h.104a2.21 2.21 0 01.744-.122h-.001zm-9.025 10.01v1.021l3.717 1.328.859-.684-4.576-1.665zm8.952-7.956c-.388 0-1.434 1.553-1.434 4.514 0 2.961 1.068 4.514 1.435 4.514l.073-.01.042-.005c.426-.102 1.402-1.63 1.402-4.499 0-2.973-1.132-4.515-1.518-4.515v.001zm-2.963 1.051l-7.936 2.788c-.029.04-.15.233-.15.694 0 .514.171.624.171.624l7.915 2.799-.117-.421a11.859 11.859 0 01-.375-3.02 11.831 11.831 0 01.492-3.464zm7.99 9.103l2.825 3.037-1.415 1.517-2.823-3.036 1.412-1.52v.002zM23 10.88v2.147h-3.996V10.88H23zM20.586 2L22 3.519l-2.826 3.037-1.412-1.519L20.586 2z">
+                        </path>
+                    </svg>
+                    <span class="newep">Crunchyroll News</span>
+                </div>
+                <div class="viewrelease">
+                    <span>VIEW ALL</span>
+                    <svg class="angle--pJ1yZ angle--is-right--iTQzd feed-header__view-link-icon--8jqah"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" data-t="angle-right-svg"
+                        aria-labelledby="angle-svg" aria-hidden="true" role="img">
+                        <title id="angle-svg">Next</title>
+                        <path d="M8.6 7.4L10 6l6 6-6 6-1.4-1.4 4.6-4.6z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="topnews">
+                <span class="topnewstext">Top News</span>
+                <div class="topnewsdabba1">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/1920x1080/9f3d92973a/solo-leveling-reawakening.jpg/m/360x0"
+                        alt="Crunchyroll Winter 2025 Dubs Include Solo Leveling Season 2 and More" data-t="" width="97%"
+                        height="60%" style="border-radius: 4px;">
+                    <span class="badatextofdabba1">Crunchyroll Winter 2024 Dubs Include Solo Leveling Season 2 and
+                        more</span>
+                    <span class="dateofdabba1">Dec 13, 2024 10:30pm GMT+5:30 by Joseph Luster</span>
+                </div>
+                <div class="topnewsdabba1">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/960x540/9b0a3a2b08/cr_shin_hero.png/m/360x0"
+                        alt="Crayon Shin-chan Anime Travels to India for 2025 Film" data-t=""
+                        style="border-radius: 4px; width: 97%; height: 60%;">
+                    <span class="badatextofdabba1">Crayon Shin-chan Anime Travels to India for 2025 Film</span>
+                    <span class="dateofdabba1">Dec 14, 2024 7:16pm GMT+5:30 by Kara Dennison</span>
+                </div>
+            </div>
+            <div class="latestnews">
+                <span class="topnewstext">Latest</span>
+                <div class="latestnewsdabba">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/960x540/c4eb5680f5/cr_bleach_hero.png/m/0x88"
+                        alt="Bleach: Thousand-Year Blood War Part 3 Anime Announces Hour-Long Finale, New Cast"
+                        data-t="" style="border-radius: 4px;">
+                    <div class="latestnewsinnserdabba">
+                        <span class="badatextofdabba1 nigger">Bleach: Thousand-Year Blood War Part 3 Anime Announces
+                            Hour-Long
+                            Finale, New Cast</span>
+                        <span class="dateofdabba1">Dec 16, 2024 6:28pm GMT+5:30</span>
+                    </div>
+                </div>
+                <div class="latestnewsdabba">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/920x518/9d3c749c44/ringing-fate.jpg/m/0x88"
+                        alt="RINGING FATE Donghua Japanese Dub Previews Theme Songs in New Trailer" data-t=""
+                        style="border-radius: 4px;">
+                    <div class="latestnewsinnserdabba">
+                        <span class="badatextofdabba1 nigger">RINGING FATE Donghua Japanese Dub Previews Theme Song in
+                            New Trailer</span>
+                        <span class="dateofdabba1">Dec 16, 2024 3:56pm GMT+5:30</span>
+                        <span class="dateofdabba1">by Liam Dempsey</span>
+                    </div>
+                </div>
+                <div class="latestnewsdabba">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/960x540/7b27d9f716/killkiss-opening-movie.jpg/m/0x88"
+                        alt="BanG Dream! Ave Mujica Anime Reveals Opening Movie Prior to TV Premiere " data-t=""
+                        style="border-radius: 4px;">
+                    <div class="latestnewsinnserdabba">
+                        <span class="badatextofdabba1 nigger">BanG Dream! Ave Mujica Anime Reveals Opening Movie Prior
+                            to TV Premiere</span>
+                        <span class="dateofdabba1">Dec 16, 2024 11:43am GMT+5:30</span>
+                        <span class="dateofdabba1">by Mikikazu Komatsu</span>
+                    </div>
+                </div>
+                <div class="latestnewsdabba">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/960x538/8302203a7d/mono_haruno_akiyama_header.jpg/m/0x88"
+                        alt="Mono Anime Reveals Haruno Akiyama Character Art and Trailer" data-t=""
+                        style="border-radius: 4px;">
+                    <div class="latestnewsinnserdabba">
+                        <span class="badatextofdabba1 nigger">Mono Anime Reveals Haruno Akiyama Character Art and
+                            Trailer</span>
+                        <span class="dateofdabba1">Dec 16, 2024 3:55pm GMT+5:30</span>
+                        <span class="dateofdabba1">by Paul Chapmen</span>
+                    </div>
+                </div>
+                <div class="latestnewsdabba">
+                    <img class="progressive-image-base__fade--Nrn20 progressive-image-base__fade--is-ready--dMxKu content-image__image--7tGlg"
+                        loading="eager"
+                        src="https://a.storyblok.com/f/178900/920x518/217f54ccf6/my-awkward-senpai.jpg/m/0x88"
+                        alt="My Awkward Senpai Anime Announced for 2025 Release" data-t="" style="border-radius: 4px;">
+                    <div class="latestnewsinnserdabba">
+                        <span class="badatextofdabba1 nigger">My Awkward Senpai Anime Announced for 2025 Release</span>
+                        <span class="dateofdabba1">Dec 16, 2024 3:01pm GMT+5:30</span>
+                        <span class="dateofdabba1">by Liam Dempsey</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="banner">
+        <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1350/CurationAssets/Dragon%20Ball%20DAIMA/SEASON%201/MARKETING%20BANNER/DragonBallDaima-S1C1-KV1-Banner-2100x700-EN.png"
+            alt="Dragon Ball DAIMA" data-t="original-image" sizes="100vw"
+            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=720/CurationAssets/Dragon%20Ball%20DAIMA/SEASON%201/MARKETING%20BANNER/DragonBallDaima-S1C1-KV1-Banner-2100x700-EN.png 720w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1080/CurationAssets/Dragon%20Ball%20DAIMA/SEASON%201/MARKETING%20BANNER/DragonBallDaima-S1C1-KV1-Banner-2100x700-EN.png 1080w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1350/CurationAssets/Dragon%20Ball%20DAIMA/SEASON%201/MARKETING%20BANNER/DragonBallDaima-S1C1-KV1-Banner-2100x700-EN.png 1350w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/Dragon%20Ball%20DAIMA/SEASON%201/MARKETING%20BANNER/DragonBallDaima-S1C1-KV1-Banner-2100x700-EN.png 2700w">
+    </div>
+    <div class="freetowatch">
+        <span>Exclusive in India!</span>
+        <span>Check out these anime only available on Crunchyroll!</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/bb5785a9fe043b8331b7842068bfcb05.jpg"
+                        alt="Kaiju No. 8" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/bb5785a9fe043b8331b7842068bfcb05.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/bb5785a9fe043b8331b7842068bfcb05.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/bb5785a9fe043b8331b7842068bfcb05.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Kaiju No. 8</span>
+                        <div class="rating">
+                            <span>4.9 * (189.9K)</span>
+                            <span>1 Season</span>
+                            <span>12 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Kaiju No. 8</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/a0ad4900ae610de44eb49dfc0881cc6a.jpg"
+                        alt="Viral Hit" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/a0ad4900ae610de44eb49dfc0881cc6a.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/a0ad4900ae610de44eb49dfc0881cc6a.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/a0ad4900ae610de44eb49dfc0881cc6a.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Viral Hit</span>
+                        <div class="rating">
+                            <span>4.7 * (17K)</span>
+                            <span>1 Season</span>
+                            <span>12 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Viral Hit</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/2ea138d06fb4b5dac870eb8379345f7c.jpg"
+                        alt="Black Butler" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/2ea138d06fb4b5dac870eb8379345f7c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/2ea138d06fb4b5dac870eb8379345f7c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/2ea138d06fb4b5dac870eb8379345f7c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Black Butler</span>
+                        <div class="rating">
+                            <span>4.7 * (21.8K)</span>
+                            <span>6 Season</span>
+                            <span>65 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Black Butler</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/6ed9bbbcecf79627099c1c41783eb000.jpg"
+                        alt="Unnamed Memory" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/6ed9bbbcecf79627099c1c41783eb000.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/6ed9bbbcecf79627099c1c41783eb000.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/6ed9bbbcecf79627099c1c41783eb000.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Unnamed Memory</span>
+                        <div class="rating">
+                            <span>4.4 * (18.3K)</span>
+                            <span>1 Season</span>
+                            <span>12 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Unnamed Memory</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/028406c1f26bb4e8dc3f119a91b046a4.jpg"
+                        alt="An Archdemon's Dilemma: How to Love Your Elf Bride" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/028406c1f26bb4e8dc3f119a91b046a4.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/028406c1f26bb4e8dc3f119a91b046a4.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/028406c1f26bb4e8dc3f119a91b046a4.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">How to Love Your Elf Bride</span>
+                        <div class="rating">
+                            <span>4.8 * (36.7K)</span>
+                            <span>1 Season</span>
+                            <span>12 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>How to Love Your Elf Brides</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="leftmephotohaiso">
+        <div class="leftmehaisouskaphoto">
+            <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg"
+                alt="Seirei Gensouki: Spirit Chronicles" data-t="original-image"
+                sizes="(min-width: 64em) 600px, (min-width: 50em) 300px, 100vw"
+                srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=360/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg 360w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg 600w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg 960w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200/catalog/crunchyroll/2b2f015ed1adf726347dd4df8bc41df3.jpg 1200w">
+            <div class="leftmehaisouskahover"><span>TO SERIES</span></div>
+        </div>
+        <div class="leftmehaisouskatext">
+            <span class="seirei">Seirei Gensouki: Spirit Chronicles</span>
+            <span class="seireikasubdub">Sub | Dub</span>
+            <span class="seireikapragraph">His past life and current life are intersecting--a boy with memories of two
+                lives faces his destiny!
+                After his mother was killed at an early age, the orphaned Rio fought his hardest to survive in the
+                slums. One day, he awakens to the memories of Haruto Amakawa, who died.....</span>
+            <div class="buttonsgroup seireibutongroup">
+                <button class="button1 seireikabutton1">
+                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" data-t="play-svg"
+                        aria-labelledby="play-svg" aria-hidden="true" role="img" width="30px">
+                        <title id="play-svg">Play</title>
+                        <path
+                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                        </path>
+                    </svg>
+                    START WATCHING S1 E1</button>
+                <button class="button2 seireikabutton2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg" aria-hidden="false"
+                        role="img">
+                        <title id="watchlist-svg">Watchlist</title>
+                        <path
+                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                        </path>
+                    </svg>ADD TO WATCHLIST</button>
+            </div>
+        </div>
+    </div>
+    <div class="freetowatch">
+        <span>Hindi Dubs Available on Crunchyroll!</span>
+        <span>Check out these great Hindi dubs!</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg"
+                        alt="Dragon Ball Movies" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/8802795dc1bbe896b2d3baeba4a49d0b.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Dragon Ball Movies</span>
+                        <div class="rating">
+                            <span>4.7 * (13.6K)</span>
+                            <span>1 Season</span>
+                            <span>1 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Dragon Ball Movies</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg"
+                        alt="Solo Leveling" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Solo Leveling</span>
+                        <div class="rating">
+                            <span>4.9 * (360.2K)</span>
+                            <span>1 Season</span>
+                            <span>13 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Solo Leveling</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/51217e17030bc00540316a61234a8311.jpg"
+                        alt="BUCCHIGIRI?!" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/51217e17030bc00540316a61234a8311.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/51217e17030bc00540316a61234a8311.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/51217e17030bc00540316a61234a8311.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">BUCCHIGIRI?!</span>
+                        <div class="rating">
+                            <span>4.1 * (17.4K)</span>
+                            <span>1 Season</span>
+                            <span>13 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>BUCCHIGIRI?!</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg"
+                        alt="Code Geass" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/efb29ad752e647212b3e199da7748e9e.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Code Geass</span>
+                        <div class="rating">
+                            <span>4.9 * (45.9K)</span>
+                            <span>2 Season</span>
+                            <span>50 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Code Geass</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg"
+                        alt="Demon Slayer: Kimetsu no Yaiba" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Demon Slayer: Kimetsu no Yaiba</span>
+                        <div class="rating">
+                            <span>4.9 * (556.8K)</span>
+                            <span>6 Season</span>
+                            <span>64 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Demon Slayer: Kimetsu no Yaiba</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="space"></div>
+    <div class="freetowatch">
+        <span>Tamil Dubs Available on Crunchyroll!</span>
+        <span>Great anime dubbed in Tamil</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg"
+                        alt="Solo Leveling" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Solo Leveling</span>
+                        <div class="rating">
+                            <span>4.9 * (360.2K)</span>
+                            <span>1 Season</span>
+                            <span>13 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Solo Leveling</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg"
+                        alt="Demon Slayer: Kimetsu no Yaiba" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Demon Slayer: Kimetsu no Yaiba</span>
+                        <div class="rating">
+                            <span>4.9 * (556.8K)</span>
+                            <span>6 Season</span>
+                            <span>64 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Demon Slayer: Kimetsu no Yaiba</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg"
+                        alt="Frieren: Beyond Journey's End" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/f446d7a2a155c6120742978fb528fb82.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Frieren: Beyond Journey's End</span>
+                        <div class="rating">
+                            <span>4.9 * (188.1K)</span>
+                            <span>1 Season</span>
+                            <span>28 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Frieren: Beyond Journey's End</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/c4b9650d301c602a2e04cbdf09412204.jpg"
+                        alt="Shangri-La Frontier" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/c4b9650d301c602a2e04cbdf09412204.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/c4b9650d301c602a2e04cbdf09412204.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/c4b9650d301c602a2e04cbdf09412204.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Shangri-La Frontier</span>
+                        <div class="rating">
+                            <span>4.9 * (108.2K)</span>
+                            <span>2 Season</span>
+                            <span>36 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Shangri-La Frontier</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg"
+                        alt="VINLAND SAGA" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">VINLAND SAGA</span>
+                        <div class="rating">
+                            <span>4.8 * (78.6K)</span>
+                            <span>2 Season</span>
+                            <span>48 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>VINLAND SAGA</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="leftmephotohaiso">
+        <div class="leftmehaisouskaphoto">
+            <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg"
+                alt="One Piece" data-t="original-image" sizes="(min-width: 64em) 600px, (min-width: 50em) 300px, 100vw"
+                srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=360/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg 360w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg 600w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg 960w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200/catalog/crunchyroll/a249096c7812deb8c3c2c907173f3774.jpg 1200w">
+            <div class="leftmehaisouskahover"><span>TO SERIES</span></div>
+        </div>
+        <div class="leftmehaisouskatext">
+            <span class="seirei">One Piece</span>
+            <span class="seireikasubdub">Sub | Dub</span>
+            <span class="seireikapragraph">Embark on a voyage of a lifetime with One Piece. The epic anime series
+                created by renowned mangaka Eiichiro Oda is a global phenomenon, captivating the hearts of fans across
+                generations throughout its 25-year span. This thrilling high seas adventure is filled with.....</span>
+            <div class="buttonsgroup seireibutongroup">
+                <button class="button1 seireikabutton1">
+                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" data-t="play-svg"
+                        aria-labelledby="play-svg" aria-hidden="true" role="img" width="30px">
+                        <title id="play-svg">Play</title>
+                        <path
+                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                        </path>
+                    </svg>
+                    START WATCHING S1 E1</button>
+                <button class="button2 seireikabutton2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg" aria-hidden="false"
+                        role="img">
+                        <title id="watchlist-svg">Watchlist</title>
+                        <path
+                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                        </path>
+                    </svg>ADD TO WATCHLIST</button>
+            </div>
+        </div>
+    </div>
+    <div class="leftmephotohaiso leftmephotohaiso1">
+        <div class="leftmehaisouskaphoto">
+            <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg"
+                alt="Re:ZERO -Starting Life in Another World-" data-t="original-image"
+                sizes="(min-width: 64em) 600px, (min-width: 50em) 300px, 100vw"
+                srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=360/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg 360w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg 600w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg 960w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200/catalog/crunchyroll/5525651c53b49243de6835134651192c.jpg 1200w">
+            <div class="leftmehaisouskahover"><span>TO SERIES</span></div>
+        </div>
+        <div class="leftmehaisouskatext">
+            <span class="seirei">Re:ZERO -Starting Life in Another World- </span>
+            <span class="seireikasubdub">Sub | Dub</span>
+            <span class="seireikapragraph">Natsuki Subaru, an ordinary high school student, is on his way home from the
+                convenience store when he finds himself transported to another world. As he's lost and confused in a new
+                world where he doesn't even know left from right, the only person to reach out to him was a.....</span>
+            <div class="buttonsgroup seireibutongroup">
+                <button class="button1 seireikabutton1">
+                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" data-t="play-svg"
+                        aria-labelledby="play-svg" aria-hidden="true" role="img" width="30px">
+                        <title id="play-svg">Play</title>
+                        <path
+                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                        </path>
+                    </svg>
+                    START WATCHING S1 E1</button>
+                <button class="button2 seireikabutton2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg" aria-hidden="false"
+                        role="img">
+                        <title id="watchlist-svg">Watchlist</title>
+                        <path
+                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                        </path>
+                    </svg>ADD TO WATCHLIST</button>
+            </div>
+        </div>
+    </div>
+    <div class="freetowatch">
+        <span>Most Popular</span>
+        <span>Popular anime</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg"
+                        alt="One Piece" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">One Piece</span>
+                        <div class="rating">
+                            <span>4.8 * (563.8K)</span>
+                            <span>4 Season</span>
+                            <span>255 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>One Piece</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/13839ea2b48b0323417b23813a090c93.jpg"
+                        alt="DAN DA DAN" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/13839ea2b48b0323417b23813a090c93.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/13839ea2b48b0323417b23813a090c93.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/13839ea2b48b0323417b23813a090c93.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">DAN DA DAN</span>
+                        <div class="rating">
+                            <span>4.9 * (117.4K)</span>
+                            <span>1 Season</span>
+                            <span>11 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>DAN DA DAN</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/6e008ad5211c3998b8f3e4bc166821cd.jpg"
+                        alt="My Hero Academia" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/6e008ad5211c3998b8f3e4bc166821cd.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/6e008ad5211c3998b8f3e4bc166821cd.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/6e008ad5211c3998b8f3e4bc166821cd.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">My Hero Academia</span>
+                        <div class="rating">
+                            <span>4.7 * (259.8K)</span>
+                            <span>8 Season</span>
+                            <span>169 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>My Hero Academia</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/b5621ff1277ed6ad1006b0c6f14900bb.jpg"
+                        alt="BLUE LOCK" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/b5621ff1277ed6ad1006b0c6f14900bb.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/b5621ff1277ed6ad1006b0c6f14900bb.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/b5621ff1277ed6ad1006b0c6f14900bb.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">BLUE LOCK</span>
+                        <div class="rating">
+                            <span>4.8 * (170K)</span>
+                            <span>3 Season</span>
+                            <span>36 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>BLUE LOCK</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/323c82257b2f6567fabbb7bd55bfa753.jpg"
+                        alt="Attack on Titan" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/323c82257b2f6567fabbb7bd55bfa753.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/323c82257b2f6567fabbb7bd55bfa753.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/323c82257b2f6567fabbb7bd55bfa753.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Attack on Titan</span>
+                        <div class="rating">
+                            <span>4.9 * (319.4K)</span>
+                            <span>4 Season</span>
+                            <span>89 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Attack on Titan</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="space"></div>
+    <div class="freetowatch">
+        <span>Telugu Dubs</span>
+        <span>Anime now available with Telugu dubbing</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg"
+                        alt="Solo Leveling" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/5e7f533c3b4f46244ca228af62e83dfa.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Solo Leveling</span>
+                        <div class="rating">
+                            <span>4.9 * (360.2K)</span>
+                            <span>1 Season</span>
+                            <span>13 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Solo Leveling</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg"
+                        alt="Demon Slayer: Kimetsu no Yaiba" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Demon Slayer: Kimetsu no Yaiba</span>
+                        <div class="rating">
+                            <span>4.9 * (556.8K)</span>
+                            <span>6 Season</span>
+                            <span>64 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Demon Slayer: Kimetsu no Yaiba</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg"
+                        alt="VINLAND SAGA" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/b333f764127c1e06d49aa7ca7c262ff8.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">VINLAND SAGA</span>
+                        <div class="rating">
+                            <span>4.8 * (78.6K)</span>
+                            <span>2 Season</span>
+                            <span>48 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>VINLAND SAGA</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/da1db9f24b365129646e8b4508858217.jpg"
+                        alt="Fire Force" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/da1db9f24b365129646e8b4508858217.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/da1db9f24b365129646e8b4508858217.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/da1db9f24b365129646e8b4508858217.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Fire Force</span>
+                        <div class="rating">
+                            <span>4.7 * (64.1K)</span>
+                            <span>2 Season</span>
+                            <span>48 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Fire Force</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe"
+                        alt="JUJUTSU KAISEN" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/e4e80c83c792d81c138e320874dbdffc.jpe 960w">
+                    <div class="animehover">
+                        <span class="span1">JUJUTSU KAISEN</span>
+                        <div class="rating">
+                            <span>4.9 * (469.7K)</span>
+                            <span>3 Season</span>
+                            <span>48 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>JUJUTSU KAISEN</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="banner">
+        <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+            src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1350/CurationAssets/Mecha-Ude:%20Mechanical%20Arms/SEASON%201/MARKETING%20BANNER/MechaUde-S1-KV1-Banner-2100x700-EN.png"
+            alt="Mecha-Ude: Mechanical Arms" data-t="original-image" sizes="100vw"
+            srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=720/CurationAssets/Mecha-Ude:%20Mechanical%20Arms/SEASON%201/MARKETING%20BANNER/MechaUde-S1-KV1-Banner-2100x700-EN.png 720w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1080/CurationAssets/Mecha-Ude:%20Mechanical%20Arms/SEASON%201/MARKETING%20BANNER/MechaUde-S1-KV1-Banner-2100x700-EN.png 1080w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1350/CurationAssets/Mecha-Ude:%20Mechanical%20Arms/SEASON%201/MARKETING%20BANNER/MechaUde-S1-KV1-Banner-2100x700-EN.png 1350w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=2700/CurationAssets/Mecha-Ude:%20Mechanical%20Arms/SEASON%201/MARKETING%20BANNER/MechaUde-S1-KV1-Banner-2100x700-EN.png 2700w">
+    </div>
+    <div class="leftmephotohaiso">
+        <div class="leftmehaisouskaphoto">
+            <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg"
+                alt="Tying the Knot with an Amagami Sister" data-t="original-image"
+                sizes="(min-width: 64em) 600px, (min-width: 50em) 300px, 100vw"
+                srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=360/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg 360w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg 600w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg 960w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200/catalog/crunchyroll/4e2ed9be5dd704917356121183cc348b.jpg 1200w">
+            <div class="leftmehaisouskahover"><span>TO SERIES</span></div>
+        </div>
+        <div class="leftmehaisouskatext">
+            <span class="seirei">Tying the Knot with an Amagami Sister</span>
+            <span class="seireikasubdub">Sub | Dub</span>
+            <span class="seireikapragraph">Uryu Kamihate is a high school student hoping to enroll in Kyoto University’s
+                medical school. After being taken in by the chief priest at Amagami Shrine, he is told he must marry one
+                of three maiden sisters—Yae, Yuna, or Asahi—to live at, and one day inherit, the Amagami
+                Shrin.....</span>
+            <div class="buttonsgroup seireibutongroup">
+                <button class="button1 seireikabutton1">
+                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" data-t="play-svg"
+                        aria-labelledby="play-svg" aria-hidden="true" role="img" width="30px">
+                        <title id="play-svg">Play</title>
+                        <path
+                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                        </path>
+                    </svg>
+                    START WATCHING S1 E1</button>
+                <button class="button2 seireikabutton2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg" aria-hidden="false"
+                        role="img">
+                        <title id="watchlist-svg">Watchlist</title>
+                        <path
+                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                        </path>
+                    </svg>ADD TO WATCHLIST</button>
+            </div>
+        </div>
+    </div>
+    <div class="leftmephotohaiso leftmephotohaiso1">
+        <div class="leftmehaisouskaphoto">
+            <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg"
+                alt="A Terrified Teacher at Ghoul School!" data-t="original-image"
+                sizes="(min-width: 64em) 600px, (min-width: 50em) 300px, 100vw"
+                srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=360/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg 360w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=600/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg 600w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg 960w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=1200/catalog/crunchyroll/6df5fe05e636410e24bb227db0bd5083.jpg 1200w">
+            <div class="leftmehaisouskahover"><span>TO SERIES</span></div>
+        </div>
+        <div class="leftmehaisouskatext">
+            <span class="seirei">A Terrified Teacher at Ghoul School!</span>
+            <span class="seireikasubdub">Subtitled</span>
+            <span class="seireikapragraph">Haruaki Abe is happy to finally fulfill his dream of becoming a
+                teacher. That happiness is short-lived after he arrives at Hyakki Academy and finds out the
+                school is full of monsters! Can Abe overcome his cowardice and get his supernatural students
+                under control? Join the timid.....</span>
+            <div class="buttonsgroup seireibutongroup">
+                <button class="button1 seireikabutton1">
+                    <svg class="hello" xmlns="http://www.w3.org/2000/svg" viewBox="0 3 20 20" data-t="play-svg"
+                        aria-labelledby="play-svg" aria-hidden="true" role="img" width="30px">
+                        <title id="play-svg">Play</title>
+                        <path
+                            d="M5.944 3C5.385 3 5 3.445 5 4.22v16.018c0 .771.384 1.22.945 1.22.234 0 .499-.078.779-.243l13.553-7.972c.949-.558.952-1.468 0-2.028L6.724 3.243C6.444 3.078 6.178 3 5.944 3m1.057 2.726l11.054 6.503L7 18.732l.001-13.006">
+                        </path>
+                    </svg>
+                    START WATCHING S1 E1</button>
+                <button class="button2 seireikabutton2"><svg class="" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24" data-t="watchlist-svg" aria-labelledby="watchlist-svg" aria-hidden="false"
+                        role="img">
+                        <title id="watchlist-svg">Watchlist</title>
+                        <path
+                            d="M17 18.113l-3.256-2.326A2.989 2.989 0 0 0 12 15.228c-.629 0-1.232.194-1.744.559L7 18.113V4h10v14.113zM18 2H6a1 1 0 0 0-1 1v17.056c0 .209.065.412.187.581a.994.994 0 0 0 1.394.233l4.838-3.455a1 1 0 0 1 1.162 0l4.838 3.455A1 1 0 0 0 19 20.056V3a1 1 0 0 0-1-1z">
+                        </path>
+                    </svg>ADD TO WATCHLIST</button>
+            </div>
+        </div>
+    </div>
+    <div class="freetowatch">
+        <span>Our Favorite Anime Teams</span>
+        <span>Team up with these iconic anime squads!</span>
+    </div>
+    <div class="animelist">
+        <ul>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg"
+                        alt="One Piece" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/757bae5a21039bac6ebace5de9affcd8.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">One Piece</span>
+                        <div class="rating">
+                            <span>4.8 * (563.8K)</span>
+                            <span>4 Season</span>
+                            <span>255 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>One Piece</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/18638d44e180fd1b51870106b88e46e4.jpg"
+                        alt="Fairy Tail" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/18638d44e180fd1b51870106b88e46e4.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/18638d44e180fd1b51870106b88e46e4.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/18638d44e180fd1b51870106b88e46e4.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Fairy Tail</span>
+                        <div class="rating">
+                            <span>4.7 * (43.9K)</span>
+                            <span>3 Season</span>
+                            <span>329 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Fairy Tail</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe"
+                        alt="JoJo's Bizarre Adventure" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/2423e59e70fab2f873cbe48c9dac0d21.jpe 960w">
+                    <div class="animehover">
+                        <span class="span1">JoJo's Bizarre Advanture</span>
+                        <div class="rating">
+                            <span>4.7 * (56.7K)</span>
+                            <span>4 Season</span>
+                            <span>77 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>JoJo's Bizarre Advanture</span>
+                        <span>Subtitled</span>
+                    </div>
+                </div>
+
+            </li>
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="eager"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg"
+                        alt="Demon Slayer: Kimetsu no Yaiba" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/765ee047befcfb677d169f5de4c82d5c.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">Demon Slayer: Kimetsu no Yaiba</span>
+                        <div class="rating">
+                            <span>4.9 * (556.8K)</span>
+                            <span>6 Season</span>
+                            <span>64 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>Demon Slayer: Kimetsu no Yaiba</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+
+            <li>
+                <div class="animelistimg">
+                    <img class="content-image__image--7tGlg progressive-image-loading__original--k-k-7" loading="lazy"
+                        src="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480,height=720/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg"
+                        alt="MASHLE: MAGIC AND MUSCLES" data-t="original-image"
+                        sizes="(min-width: 135em) calc(100vw / 7), (min-width: 107.5em) calc(100vw / 6), (min-width: 50em) calc(100vw / 5), (min-width: 35.5em) calc(100vw / 4), (min-width: 30em) calc(100vw / 3), 50vw"
+                        srcset="https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=240/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg 240w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=480/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg 480w, https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=contain,format=auto,quality=85,width=960/catalog/crunchyroll/f7dfe109de592c6dd9a78dc75ec1965b.jpg 960w">
+                    <div class="animehover">
+                        <span class="span1">MASHLE: MAGIC AND MUSCLES</span>
+                        <div class="rating">
+                            <span>4.8 * (153.3K)</span>
+                            <span>2 Season</span>
+                            <span>25 Episodes</span>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, animi blanditiis velit
+                                quod tempore magnam harum sunt voluptates perspiciatis voluptate!</p>
+                        </div>
+                    </div>
+                    <div class="subdub">
+                        <span>MASHLE: MAGIC AND MUSCLES</span>
+                        <span>Sub | Dub</span>
+                    </div>
+                </div>
+
+            </li>
+        </ul>
+    </div>
+    <div class="space"></div>
+    <div class="lastsvg">
+        <img class="view-all-feed-image" src="https://www.crunchyroll.com/build/assets/img/home/yuzu.png"
+            srcset="https://www.crunchyroll.com/build/assets/img/home/yuzu@2x.png 2x" alt="Yuzu." width="300px">
+        <span>Still looking for something to watch?
+            Check out our full library</span>
+        <button class="viewall">VIEW ALL</button>
+    </div>
+    <div class="space"></div>
+    <div class="listitemskadabba">
+        <div class="list1">
+            <ul>
+                <span class="navigation">Navigation</span>
+                <li><span class="navitem">Browse Popular</span></li>
+                <li><span class="navitem">Browse Simulcasts</span></li>
+                <li><span class="navitem">Release Calender</span></li>
+                <li><span class="navitem">News</span></li>
+                <li><span class="navitem">Games</span></li>
+            </ul>
+        </div>
+        <div class="list1">
+            <ul>
+                <span class="navigation">Connect With Us</span>
+                <li><span class="navitem"> <svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                            data-t="youtube-svg" aria-labelledby="youtube-svg" aria-hidden="true" role="img">
+                            <title id="youtube-svg">YouTube</title>
+                            <path
+                                d="M15.666,4.124A2.01,2.01,0,0,0,14.251,2.7,47.511,47.511,0,0,0,8,2.364,47.511,47.511,0,0,0,1.749,2.7,2.01,2.01,0,0,0,.334,4.124,21.09,21.09,0,0,0,0,8a21.09,21.09,0,0,0,.334,3.876A2.01,2.01,0,0,0,1.749,13.3,47.509,47.509,0,0,0,8,13.636a47.509,47.509,0,0,0,6.251-.337,2.01,2.01,0,0,0,1.415-1.424A21.09,21.09,0,0,0,16,8,21.09,21.09,0,0,0,15.666,4.124Zm-9.3,6.255V5.621L10.545,8Z">
+                            </path>
+                        </svg>YouTube</span></li>
+                <li><span class="navitem"> <svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                            data-t="facebook-svg" aria-labelledby="facebook-svg" aria-hidden="true" role="img">
+                            <title id="facebook-svg">Facebook</title>
+                            <path
+                                d="M15.1169,0 L0.8829,0 C0.3949,0 -0.0001,0.395 -0.0001,0.883 L-0.0001,15.117 C-0.0001,15.605 0.3949,16 0.8829,16 L8.5459,16 L8.5459,9.804 L6.4609,9.804 L6.4609,7.389 L8.5459,7.389 L8.5459,5.608 C8.5459,3.542 9.8079,2.417 11.6519,2.417 C12.5349,2.417 13.2939,2.482 13.5149,2.512 L13.5149,4.671 L12.2369,4.672 C11.2339,4.672 11.0399,5.148 11.0399,5.848 L11.0399,7.389 L13.4309,7.389 L13.1199,9.804 L11.0399,9.804 L11.0399,16 L15.1169,16 C15.6049,16 15.9999,15.605 15.9999,15.117 L15.9999,0.883 C15.9999,0.395 15.6049,0 15.1169,0">
+                            </path>
+                        </svg>Facebook</span></li>
+                <li><span class="navitem"> <svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                            data-t="x-svg" aria-labelledby="x-svg" aria-hidden="true" role="img">
+                            <title id="x-svg">X</title>
+                            <path
+                                d="M13.7124 10.6179L20.4133 3H18.8254L13.0071 9.61448L8.35992 3H3L10.0274 13.0023L3 20.9908H4.58799L10.7324 14.0056L15.6401 20.9908H21L13.7121 10.6179H13.7124ZM11.5375 13.0904L10.8255 12.0944L5.16017 4.16911H7.59922L12.1712 10.5651L12.8832 11.5611L18.8262 19.8748H16.3871L11.5375 13.0908V13.0904Z">
+                            </path>
+                        </svg>X</span></li>
+                <li><span class="navitem"><svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                            data-t="instagram-svg" aria-labelledby="instagram-svg" aria-hidden="true" role="img">
+                            <title id="instagram-svg">Instagram</title>
+                            <path
+                                d="M8,1.44c2.14,0,2.39,0,3.23,0a4.43,4.43,0,0,1,1.49.28,2.48,2.48,0,0,1,.92.6,2.48,2.48,0,0,1,.6.92,4.43,4.43,0,0,1,.28,1.49c0,0.84,0,1.1,0,3.23s0,2.39,0,3.23a4.43,4.43,0,0,1-.28,1.49,2.65,2.65,0,0,1-1.52,1.52,4.43,4.43,0,0,1-1.49.28c-0.84,0-1.1,0-3.23,0s-2.39,0-3.23,0a4.43,4.43,0,0,1-1.49-.28,2.48,2.48,0,0,1-.92-0.6,2.48,2.48,0,0,1-.6-0.92,4.43,4.43,0,0,1-.28-1.49c0-.84,0-1.1,0-3.23s0-2.39,0-3.23a4.43,4.43,0,0,1,.28-1.49,2.48,2.48,0,0,1,.6-0.92,2.48,2.48,0,0,1,.92-0.6,4.43,4.43,0,0,1,1.49-.28c0.84,0,1.1,0,3.23,0M8,0C5.83,0,5.55,0,4.7,0A5.87,5.87,0,0,0,2.76.42a3.92,3.92,0,0,0-1.42.92A3.92,3.92,0,0,0,.42,2.76,5.87,5.87,0,0,0,0,4.7C0,5.55,0,5.83,0,8s0,2.45,0,3.3a5.87,5.87,0,0,0,.37,1.94,3.92,3.92,0,0,0,.92,1.42,3.92,3.92,0,0,0,1.42.92A5.87,5.87,0,0,0,4.7,16c0.85,0,1.13,0,3.3,0s2.45,0,3.3,0a5.87,5.87,0,0,0,1.94-.37,4.09,4.09,0,0,0,2.34-2.34A5.87,5.87,0,0,0,16,11.3c0-.85,0-1.13,0-3.3s0-2.45,0-3.3a5.87,5.87,0,0,0-.37-1.94,3.92,3.92,0,0,0-.92-1.42A3.92,3.92,0,0,0,13.24.42,5.87,5.87,0,0,0,11.3,0C10.45,0,10.17,0,8,0H8Z">
+                            </path>
+                            <path
+                                d="M8,3.89A4.11,4.11,0,1,0,12.11,8,4.11,4.11,0,0,0,8,3.89Zm0,6.77A2.67,2.67,0,1,1,10.67,8,2.67,2.67,0,0,1,8,10.67Z">
+                            </path>
+                            <circle cx="12.27" cy="3.73" r="0.96"></circle>
+                        </svg>Instagram</span></li>
+                <li><span class="navitem"><svg class="left-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"
+                            data-t="tiktok-svg" aria-labelledby="tiktok-svg" aria-hidden="true" role="img">
+                            <title id="tiktok-svg">TikTok</title>
+                            <path
+                                d="M14.095 0H1.905C.855 0 0 .854 0 1.905v12.19C0 15.145.854 16 1.905 16h12.19c1.05 0 1.905-.854 1.905-1.905V1.905C16 .855 15.146 0 14.095 0m-1.521 6.98a2.854 2.854 0 0 1-2.651-1.277v4.395A3.248 3.248 0 1 1 6.674 6.85c.068 0 .134.006.201.01v1.6c-.067-.007-.132-.02-.2-.02a1.658 1.658 0 0 0 0 3.316c.915 0 1.724-.721 1.724-1.637l.016-7.465h1.531a2.853 2.853 0 0 0 2.63 2.547v1.78">
+                            </path>
+                        </svg>TikTok</span></li>
+            </ul>
+        </div>
+        <div class="list1">
+            <ul>
+                <span class="navigation">Crunchyroll</span>
+                <li><span class="navitem"> <svg class="premium-filled"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" data-t="premium-filled-svg"
+                            aria-labelledby="premium-filled-svg" aria-hidden="true" role="img">
+                            <title id="premium-filled-svg">Premium</title>
+                            <path d="M2.419 13L0 4.797 4.837 6.94 8 2l3.163 4.94L16 4.798 13.581 13z"></path>
+                        </svg>Start a Free Trial</span></li>
+                <li><span class="navitem">About</span></li>
+                <li><span class="navitem">Help Center</span></li>
+                <li><span class="navitem">Terms of Use</span></li>
+                <li><span class="navitem">Privacy Policy</span></li>
+                <li><span class="navitem">AdChoices</span></li>
+                <li><span class="navitem">Do Not Sell or Share My Personal Information</span></li>
+                <li><span class="navitem">Cookie Consent Tool</span></li>
+                <li><span class="navitem">Press Inquiries</span></li>
+                <li><span class="navitem">Get the Apps</span></li>
+                <li><span class="navitem">Reedem Gift Card</span></li>
+                <li><span class="navitem">jobs</span></li>
+            </ul>
+        </div>
+        <div class="list1">
+            <ul>
+                <span class="navigation">Account</span>
+                <li><span class="navitem">Create Account</span></li>
+                <li><span class="navitem">Log In</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sony">
+        <div class="footerimgs">
+            <img class="footer-logo" src="https://www.crunchyroll.com/build/assets/img/footer/sony_pictures_logo.png" width="54%">
+            <span class="copyright"> |&nbsp; © Crunchyroll, LLC</span>
+        </div>
+        <select class="lang" name="options">
+            <option value="option1">English</option>
+            <option value="option2">Hindi</option>
+        </select>
     </div>
 </body>
 
